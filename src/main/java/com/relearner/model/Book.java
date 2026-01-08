@@ -2,12 +2,13 @@ package com.relearner.model;
 
 import java.time.LocalDate;
 
-public class Book {
+public abstract class Book {
     private Long id;
-    private String title, author, type;
+    private String title, author;
+    private BookType type;
     private LocalDate publishedDate;
 
-    public Book(Long id, String title, String author, String type, LocalDate publishedDate){
+    public Book(Long id, String title, String author, BookType type, LocalDate publishedDate){
         this.id =id;
         this.title = title;
         this.author = author;
@@ -28,7 +29,7 @@ public class Book {
         return author;
     }
 
-    public String getType(){
+    public BookType getType(){
         return type;
     }
 
@@ -55,10 +56,8 @@ public class Book {
         this.author = author;
     }
 
-    public void setType(String type){
-        if (type.isEmpty()){
-            throw new IllegalArgumentException("Masukin type bukunya iih ...");
-        }
+    public void setType(BookType type){
+
         this.type = type;
     }
 
@@ -69,13 +68,17 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
+    public abstract String getDescription();
+
     @Override
     public String toString(){
-        return "Book{"+
-                "id: "+id+
-                "\ntitle: "+title+
-                "\nauthor: "+author+
-                "\ntype: "+type+
-                "\npublished: "+publishedDate+"}\n";
+        return getDescription();
     }
+
+//    return "Book{"+
+//            "id: "+id+
+//            "\ntitle: "+title+
+//            "\nauthor: "+author+
+//            "\ntype: "+type+
+//            "\npublished: "+publishedDate+"}\n";
 }
