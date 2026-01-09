@@ -50,32 +50,40 @@ public class BookMain {
 
     public void inputUser(BookService bService){
         Scanner keyboard = new Scanner(System.in);
-
+        boolean isEnd = false;
         System.out.println("======= SELAMAT DATANG DI PERPUSTAKAAN SYARIF ===============");
-        System.out.println("=== Silahkan pilih menu yang ada ===");
-        System.out.println("1. Pencarian Buku \n2. Pencarian Buku Berdasarkan Type \n3.Pencarian Buku Berdasarkan Author");
-        System.out.print("Masukan angka pada menu yang dipilih : ");
-        inputMenu = keyboard.nextInt();
-        keyboard.nextLine();
-        switch (inputMenu){
-            case 1 :
-                System.out.print("Masukan keyword: ");
-                inputTitle = keyboard.nextLine();
-                System.out.println(inputTitle);
-                break;
-            case 2:
-                System.out.print("Kamu mau cari buku type apa? ");
-                inputType = keyboard.nextLine();
-                printByType(bService, inputType);
-                break;
-            case 3:
-                System.out.print("Nama author yang kamu cari siapa? ");
-                inputAuthor = keyboard.nextLine();
-                printByType(bService, inputAuthor);
-                break;
-            default:
-                System.out.println("Hmmmm gajelas, kan di situ sudah di kasih tau, MASUKIN ANGKA YANG ADA DI MENU, emang di menu ada angka "+inputMenu+"????");
-                break;
+
+        while (!isEnd) {
+            System.out.println("=== Silahkan pilih menu yang ada ===");
+            System.out.println("1. Pencarian Buku \n2. Pencarian Buku Berdasarkan Type \n3. Pencarian Buku Berdasarkan Author \n0. Selesai");
+            System.out.print("Masukan angka pada menu yang dipilih : ");
+            inputMenu = keyboard.nextInt();
+            keyboard.nextLine();
+            switch (inputMenu) {
+                case 1:
+                    System.out.print("Masukan keyword: ");
+                    inputTitle = keyboard.nextLine();
+                    System.out.println(inputTitle);
+                    break;
+                case 2:
+                    System.out.print("Kamu mau cari buku type apa? ");
+                    inputType = keyboard.nextLine();
+                    printByType(bService, inputType);
+                    break;
+                case 3:
+                    System.out.print("Nama author yang kamu cari siapa? ");
+                    inputAuthor = keyboard.nextLine();
+                    printByType(bService, inputAuthor);
+                    break;
+                case 0:
+                    System.out.println("Babay.....");
+                    isEnd = true;
+                    break;
+                default:
+                    System.out.println("Hmmmm gajelas, kan di situ sudah di kasih tau, MASUKIN ANGKA YANG ADA DI MENU, emang di menu ada angka " + inputMenu + "????");
+
+            }
+            System.out.println();
         }
 
     }
