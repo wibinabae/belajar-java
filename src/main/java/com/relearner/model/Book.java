@@ -4,10 +4,11 @@ import java.time.LocalDate;
 
 public class Book {
     private Long id;
-    private String title, author, type;
+    private String title, author;
+    private BookType type;
     private LocalDate publishedDate;
 
-    public Book(Long id, String title, String author, String type, LocalDate publishedDate){
+    public Book(Long id, String title, String author, BookType type, LocalDate publishedDate){
         this.id =id;
         this.title = title;
         this.author = author;
@@ -28,7 +29,7 @@ public class Book {
         return author;
     }
 
-    public String getType(){
+    public BookType getType(){
         return type;
     }
 
@@ -55,8 +56,8 @@ public class Book {
         this.author = author;
     }
 
-    public void setType(String type){
-        if (type.isEmpty()){
+    public void setType(BookType type){
+        if (type == null){
             throw new IllegalArgumentException("Masukin type bukunya iih ...");
         }
         this.type = type;

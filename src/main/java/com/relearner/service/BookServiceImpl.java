@@ -1,6 +1,7 @@
 package com.relearner.service;
 
 import com.relearner.model.Book;
+import com.relearner.model.BookType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +19,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getBookByAuthor(String author) {
-        return null;
+        return books.stream().filter(book -> book.getAuthor().equals(author)).toList();
     }
 
     @Override
-    public List<Book> getBookByType(String type) {
-        return books.stream().filter(book -> book.getType().equals(type)).toList();
+    public List<Book> getBookByType(BookType type) {
+        return books.stream().filter(book -> book.getType() == type).toList();
     }
 
     @Override
